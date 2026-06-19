@@ -3,7 +3,7 @@
 Two ways for an agent to capture the running app. Both rely on the
 **local auth bypass** (`NEXT_PUBLIC_AUTH_BYPASS='true'` +
 `ENVIRONMENT='local'` in `.env.local`): every protected route renders as
-the seeded platform (`PLATFORM_ID='cpa'`) with **no OAuth**, so any
+the seeded platform (`PLATFORM_ID='demo'`) with **no OAuth**, so any
 `/admin/...` page is directly reachable.
 
 (Reserve visual capture for large feature changes or tricky bugs — see
@@ -54,7 +54,7 @@ encodes this so you don't grab the wrong one:
 | `admin`, `editor`, `gallery` | surface home | — |
 | `/anything/with/a/leading/slash` | unchanged | literal route |
 
-`<pid>` defaults to `NEXT_PUBLIC_PLATFORM_ID` (`cpa`); override with
+`<pid>` defaults to `NEXT_PUBLIC_PLATFORM_ID` (`demo`); override with
 `--platform <id>`. Detail pages work too: `items/<itemId>`,
 `editor:items/<itemId>`. The three surfaces differ — the gallery renders
 real thumbnails (`ContentTiles` → `ContentImage`); the editors are
@@ -175,7 +175,7 @@ open drawer → screenshot), or when you need to read the accessibility
 snapshot to find selectors.
 
 ```text
-browser_navigate("http://localhost:3000/platforms/cpa/items")   # gallery
+browser_navigate("http://localhost:3000/platforms/demo/items")   # gallery
 browser_snapshot()                       # a11y tree → find the control
 browser_click("...")
 browser_take_screenshot({ filename: "items-gallery.png" })
@@ -213,12 +213,12 @@ profiles; Option B when you need to explore or interact first.
 
 ## Which page is which
 
-`cpa` is the seeded tenant (the alias default). The three surfaces:
+`demo` is the seeded tenant (the alias default). The three surfaces:
 
 - **Gallery** (public, image-bearing) — `items`, `collections`, `persons`,
-  `map`, `info`, `landing` → `/platforms/cpa/<page>`
+  `map`, `info`, `landing` → `/platforms/demo/<page>`
 - **Platform editor** — `editor:items`, `editor:collections`,
-  `editor:persons`, `editor:users`, `editor` → `/platforms/cpa/editor/<page>`
+  `editor:persons`, `editor:users`, `editor` → `/platforms/demo/editor/<page>`
 - **Admin** — `admin` (shell), `admin:items` / `admin:collections` /
   `admin:persons` / `admin:storage` (platform-scoped),
   `admin:users` / `admin:analytics` / `admin:commerce` (global)

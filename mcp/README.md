@@ -29,7 +29,7 @@ Not registered by default; add deliberately when needed:
 ```bash
 # memory — persistent knowledge graph
 claude mcp add memory npx -- -y @modelcontextprotocol/server-memory
-#   env MEMORY_FILE_PATH=/Users/<you>/.claude/mcp-memory.json
+#   env MEMORY_FILE_PATH=~/.claude/mcp-memory.json
 
 # sonarqube as a standalone server (alternative to the plugin)
 claude mcp add sonarqube sonar -- run mcp

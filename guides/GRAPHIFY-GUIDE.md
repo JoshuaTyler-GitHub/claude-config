@@ -60,20 +60,8 @@ three ways at once:
    queries the wrong file.
 3. **It pollutes git.** `.graphify/` is correctly gitignored (it's a large
    build artifact + cache). A hand-rolled output dir usually gets committed,
-   dragging hundreds of KB of stale generated HTML/JSON into version control.
-
-### Worked example of the wrong place
-
-`open-research-system` has both `.graphify/` (the real, fresh store) **and** a
-committed `graphify-out/`. The drift is already visible:
-
-- `.graphify/GRAPH_REPORT.md` — 03:17, current build
-- `graphify-out/GRAPH_REPORT.md` — 03:01, **16 minutes stale**
-
-`.graphify/` is gitignored (right), but `graphify-out/`'s `GRAPH_REPORT.md`,
-`graph.html`, and `graph.json` are **tracked in git** — ~860 KB of stale
-generated output committed, and the repo's `README.md` / `SYNTHESIS.md` point
-readers at the stale copy. That is exactly the failure this guide prevents.
+   dragging hundreds of KB of stale generated HTML/JSON into version control,
+   where docs then cite a copy that froze at an older build.
 
 ### Fixing a repo that already has one
 
