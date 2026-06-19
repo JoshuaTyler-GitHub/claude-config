@@ -1,0 +1,14 @@
+# Project working state — local to each checkout, never shared via git
+memories/
+
+# Per-developer Claude Code overrides
+settings.local.json
+
+# Graphify build store (regenerable; see guides/GRAPHIFY-GUIDE.md)
+.graphify/
+
+# Per-agent dev-container clones
+.agents/
+
+# OS noise
+.DS_Store

@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": ["mcp__playwright"]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.file_path // .tool_response.filePath' | { read -r f; case \"$f\" in *.ts|*.tsx|*.js|*.jsx|*.css|*.json) OUT=$(npx eslint --fix \"$f\" 2>&1) || echo \"$OUT\" ;; esac; }",
+            "timeout": 60
+          }
+        ]
+      }
+    ]
+  }
+}
