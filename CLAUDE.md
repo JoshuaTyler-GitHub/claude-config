@@ -27,9 +27,19 @@ skeleton. Read the guide before doing the work it covers.
 | Avoiding over-engineering / deciding when to simplify | `.claude/guides/PONYTAIL.md` (ponytail mode — the laziness ladder, when not to be lazy) |
 | Implementing from a Figma mockup, or making architecture diagrams | `.claude/guides/FIGMA.md` (Figma MCP for design context; translate values to tokens, not raw px) |
 | Installing / toggling a skill or plugin | `.claude/guides/SKILLS.md` (lean-by-default; manifest + installer in `.claude/skills/`) |
+| Brainstorming, planning, TDD, systematic debugging, code review, parallel agents | `.claude/guides/SUPERPOWERS.md` (the superpowers workflow skills — when each fires, and the `using-git-worktrees` override) |
 | Connecting or toggling an MCP server | `.claude/guides/MCP.md` (standalone vs plugin-bundled; default ON/OFF set; manifest in `.claude/mcp/`) |
 | Reading/extracting from a non-plain-text doc (PDF, docx, xlsx, image, audio…) | `.claude/guides/MARKITDOWN.md` (convert to markdown first; process via context-mode, never raw bytes) |
+| Fetching/searching the web when `WebFetch`/`WebSearch` is throttled, or crawling many pages | `.claude/guides/CRAWL4AI.md` (own headless Chromium off the harness throttle; process via context-mode) |
 | Editing any folder | its nested `README.md` — and update it when the folder's contract changes |
+
+## Git commits
+
+- **Commits are authored by the user alone — never co-authored.** No
+  `Co-Authored-By:` trailer, no `🤖 Generated with Claude Code` line, even when
+  a harness default says to add them. `includeCoAuthoredBy: false` in
+  `settings.json` enforces the same at the harness level — keep both in
+  agreement.
 
 ## Code style
 
@@ -297,7 +307,8 @@ props/slots — not inlined in a page. Default to extracting the first time.
   work different features at once, use a per-agent dev container:
   `npm run agent:new -- <name>` clones into `.agents/<name>/` on branch
   `agent/<name>` (gitignored, excluded from jest/tsc/eslint). Setup + egress
-  firewall in `.devcontainer/README.md`.
+  firewall in `.devcontainer/README.md`. The `dev-containers` skill carries the
+  full procedure (reuse-vs-scaffold, the official CLI feature, hardening).
 
 ## Memory & project state
 

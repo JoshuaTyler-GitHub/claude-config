@@ -24,6 +24,7 @@ THIRD_PARTY_PLUGINS=(
   "context-mode@context-mode"
 )
 OFFICIAL_PLUGINS=(
+  "superpowers@claude-plugins-official"
   "playwright@claude-plugins-official"
   "sonarqube@claude-plugins-official"
   "firebase@claude-plugins-official"
@@ -50,6 +51,23 @@ for skill_dir in "$REPO_DIR"/skills/*/; do
   cp -R "$skill_dir" "$HOME/.claude/skills/$name"
   echo "  $name -> ~/.claude/skills/$name"
 done
+
+note "Setting up crawl4ai venv (web fetch/search off the harness throttle)"
+CRAWL_VENV="$HOME/.venvs/crawl4ai"
+CRAWL_SKILL="$REPO_DIR/skills/crawl4ai"
+PYBIN="$(command -v python3.12 || command -v python3 || true)"
+if [ -z "$PYBIN" ]; then
+  echo "  (skipped: no python3 on PATH)"
+else
+  [ -d "$CRAWL_VENV" ] || "$PYBIN" -m venv "$CRAWL_VENV"
+  if "$CRAWL_VENV/bin/pip" install -qU crawl4ai; then
+    "$CRAWL_VENV/bin/crawl4ai-setup" || echo "  (crawl4ai-setup had issues — run crawl4ai-doctor)"
+    cp "$CRAWL_SKILL/fetch_md.py" "$CRAWL_SKILL/search.py" "$CRAWL_VENV/"
+    echo "  crawl4ai -> $CRAWL_VENV"
+  else
+    echo "  (skipped: crawl4ai pip install failed)"
+  fi
+fi
 
 note "Registering standalone MCP servers from mcp/mcp.json"
 # Parse mcp.json with the bundled python3 and register each stdio server.

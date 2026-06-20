@@ -5,7 +5,8 @@ up. Lean-by-default rationale and per-skill detail: [`../guides/SKILLS.md`](../g
 
 This is a **manifest, not a vendor dump** — third-party plugins install from
 their marketplaces (so they stay in sync with upstream) rather than being copied
-in. The one exception is `graphify`, a loose skill vendored here as a directory.
+in. The exceptions are the loose, team-owned skills vendored here as directories
+(`crawl4ai`, `dev-containers`, `graphify`, `markitdown`).
 
 ## Manifest
 
@@ -14,12 +15,15 @@ in. The one exception is `graphify`, a loose skill vendored here as a directory.
 | `caveman` | plugin (3rd-party) | `JuliusBrussee/caveman` | marketplace add + install |
 | `ponytail` | plugin (3rd-party) | `DietrichGebert/ponytail` | marketplace add + install |
 | `context-mode` | plugin (3rd-party) | `mksglu/context-mode` | marketplace add + install |
+| `superpowers` | plugin (official) | `claude-plugins-official` | install |
 | `playwright` | plugin (official) | `claude-plugins-official` | install |
 | `sonarqube` | plugin (official) | `claude-plugins-official` | install |
 | `firebase` | plugin (official) | `claude-plugins-official` | install |
 | `serena` | plugin (official) | `claude-plugins-official` | install |
 | `context7` | plugin (official) | `claude-plugins-official` | install |
 | `figma` | plugin (official) | `claude-plugins-official` | install |
+| `crawl4ai` | loose skill (vendored) | `./crawl4ai/` | copied to `~/.claude/skills/`; `install.sh` also builds the `~/.venvs/crawl4ai` venv + drops the helpers |
+| `dev-containers` | loose skill (vendored) | `./dev-containers/` | copied to `~/.claude/skills/` |
 | `graphify` | loose skill (vendored) | `./graphify/` | copied to `~/.claude/skills/` |
 | `markitdown` | loose skill (vendored) | `./markitdown/` | copied to `~/.claude/skills/` |
 
@@ -34,6 +38,6 @@ From the repo root:
 ./install.sh
 ```
 
-It adds the third-party marketplaces, installs every plugin above, copies
-`graphify/` into `~/.claude/skills/`, and registers the standalone MCP servers
+It adds the third-party marketplaces, installs every plugin above, copies the
+loose skills into `~/.claude/skills/`, and registers the standalone MCP servers
 from [`../mcp/`](../mcp/README.md). Idempotent — safe to re-run.

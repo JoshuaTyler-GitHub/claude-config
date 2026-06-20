@@ -12,3 +12,6 @@ settings.local.json
 
 # OS noise
 .DS_Store
+
+# Python bytecode
+__pycache__/

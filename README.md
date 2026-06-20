@@ -78,11 +78,13 @@ below in sync with the files on disk.
 | `SONARQUBE-GUIDE.md` | Rule-by-rule playbook for clearing SonarQube / lint findings without suppressing them. | A SonarQube or lint cleanup pass. |
 | `GRAPHIFY-GUIDE.md` | Running graphify; its output store lives in `.graphify/` only (never a `graphify-out/` sibling); query the existing graph before rebuilding. | Running graphify in a repo or citing its output. |
 | `MARKITDOWN.md` | Converting non-plain-text docs (PDF, docx, xlsx, pptx, images, audio…) to markdown; process via context-mode, never raw bytes. | Reading/extracting from a rich or binary document. |
+| `CRAWL4AI.md` | Web fetch/search via crawl4ai's own headless Chromium, off the harness `WebFetch`/`WebSearch` throttle; process via context-mode. | Fetching/searching when the built-in web tools are rate-limited, or crawling many pages. |
 | `COMMENTS-GUIDE.md` | When (rarely) to comment: refactor-before-comment ladder, timeless/factual/brief rule, and the ban on ephemeral references (AI chats, plans, change narrative, `ponytail:` tags). | Writing a code comment or JSDoc. |
 | `CAVEMAN.md` | Caveman mode — terse, token-lean replies: toggle, levels, auto-clarity, boundaries. | Working token-lean. |
 | `PONYTAIL.md` | Ponytail mode — the laziest-that-works ladder, when *not* to be lazy. | Deciding how much to build / fighting over-engineering. |
 | `FIGMA.md` | Figma for designs, mockups, and architecture diagrams; the Figma MCP for design context; translating frame values to design-system tokens. | Implementing from a Figma mockup or making a diagram. |
 | `SKILLS.md` | What skills/plugins the team depends on, lean-by-default policy, how they install. | Installing or toggling a skill/plugin. |
+| `SUPERPOWERS.md` | The superpowers process skills (brainstorm, plan, TDD, debug, review, parallel agents): when each fires, and the `using-git-worktrees` override → dev containers. | Brainstorming, planning, TDD, debugging, or code review. |
 | `MCP.md` | MCP servers: standalone vs plugin-bundled, the default ON/OFF set, toggling on demand. | Connecting or toggling an MCP server. |
 
 ## `memories/` vs. per-user auto-memory
